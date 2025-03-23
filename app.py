@@ -12,7 +12,7 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     stories = {}
-    files = {'top': 'Top', 'new': 'New', 'ask': 'Ask HN', 'show': 'Show HN', 'jobs': 'Jobs'}
+    files = {'top': 'Top', 'new': 'New', 'ask': 'Ask HN', 'show': 'Show HN'}
 
     for key, value in files.items():
         with open(f'data/{key}.csv') as file:
@@ -31,4 +31,4 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(host=HOST, port=PORT, debug=DEBUG)
+    app.run(host='0.0.0.0', port=9443, ssl_context=("cert.pem", "key.pem"))

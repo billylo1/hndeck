@@ -38,7 +38,6 @@ if __name__ == '__main__':
         'new': 'https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty',
         'ask': 'https://hacker-news.firebaseio.com/v0/askstories.json?print=pretty',
         'show': 'https://hacker-news.firebaseio.com/v0/showstories.json?print=pretty',
-        'jobs': 'https://hacker-news.firebaseio.com/v0/jobstories.json?print=pretty',
     }
 
     sub_domains = ('www.', 'mail.', 'blog.', 'ns.', 'smtp.', 'webmail.', 'docs.', 'jobs.', 'cs.', 'apply.', 'boards.')
