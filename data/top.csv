@@ -1,31 +1,32 @@
 by,descendants,id,score,time,title,type,url,text,domain
-birdculture,54,43448075,143,1742672399,NixOS and reproducible builds could have detected the xz backdoor,story,https://luj.fr/blog/how-nixos-could-have-detected-xz.html,,luj.fr
-Brysonbw,35,43447335,177,1742665330,Map Features in OpenStreetMap with Computer Vision,story,https://blog.mozilla.ai/map-features-in-openstreetmap-with-computer-vision/,,mozilla.ai
-Anon84,20,43445931,261,1742654344,PyTorch Internals: Ezyang's Blog,story,https://blog.ezyang.com/2019/05/pytorch-internals/,,ezyang.com
-erickhill,9,43449326,28,1742683941,The Vectrex Computer,story,https://www.amigalove.com/viewtopic.php?t=2887,,amigalove.com
-marban,62,43447254,129,1742664332,Tencent's 'Hunyuan-T1'–The First Mamba-Powered Ultra-Large Model,story,https://llm.hunyuan.tencent.com/#/blog/hy-t1?lang=en,,llm.hunyuan.tencent.com
-Nicoding27,,43450060,1,1742691612,Domu Technology Inc. (YC S24) Is Hiring a Vibe Coder,job,https://www.ycombinator.com/companies/domu-technology-inc/jobs/hwWsGdU-vibe-coder-ai-engineer,,ycombinator.com
-ibobev,26,43448193,60,1742673532,Mathematical Methods for Physics [pdf],story,https://www.ma.imperial.ac.uk/~dturaev/Mathematical_Methods2021.pdf,,ma.imperial.ac.uk
-bryanrasmussen,130,43448023,162,1742671898,The polar vortex is hitting the brakes,story,https://www.climate.gov/news-features/blogs/polar-vortex/polar-vortex-hitting-brakes,,climate.gov
-todsacerdoti,2,43448457,36,1742676124,Quitting an Intel x86 Hypervisor,story,https://halobates.de/blog/p/446,,halobates.de
-Zoup,86,43445662,232,1742651819,"Landrun: Sandbox any Linux process using Landlock, no root or containers",story,https://github.com/Zouuup/landrun,,github.com
-namanyayg,1,43429804,14,1742510047,Optimizing Brainfuck interpreter in the C preprocessor,story,https://github.com/camel-cdr/bfcpp,,github.com
-pabs3,50,43411725,99,1742391067,Trapping misbehaving bots in an AI Labyrinth,story,https://blog.cloudflare.com/ai-labyrinth/,,cloudflare.com
-n1b0m,1,43417038,24,1742416678,300-year-old Polish beech voted Tree of the Year,story,https://www.bbc.co.uk/news/articles/c20dd6yk55yo,,bbc.co.uk
-ibobev,5,43445614,107,1742651190,Differential Geometry: A First Course in Curves and Surfaces [pdf],story,https://math.franklin.uga.edu/sites/default/files/users/user317/ShifrinDiffGeo.pdf,,math.franklin.uga.edu
-baud147258,11,43429427,26,1742507720,Magical Instant Bullets,story,https://militaryrealism.blog/2025/03/20/magical-instant-bullets/,,militaryrealism.blog
-tu7001,12,43448322,42,1742674738,"Meta pirated at least 101 of my books, and others",story,https://garymarcus.substack.com/p/meta-pirated-at-least-101-of-my-books,,garymarcus.substack.com
-mr_Fatalyst,53,43445720,105,1742652630,Show HN: FastOpenAPI – automated docs for many Python frameworks,story,https://github.com/mr-fatalyst/fastopenapi,,github.com
-mdp2021,16,43446442,79,1742657448,"Paul A. M. Dirac, Interview by Friedrich Hund (1982) [video]",story,https://www.youtube.com/watch?v=xJzrU38pGWc,,youtube.com
-thoughtpeddler,195,43447421,268,1742666138,California Attorney General issues consumer alert for 23andMe customers,story,https://oag.ca.gov/news/press-releases/attorney-general-bonta-urgently-issues-consumer-alert-23andme-customers,,oag.ca.gov
-prismatic,0,43417398,6,1742418939,Through a Glass Lushly: Michalina Janoszanka's Reverse Paintings (Ca. 1920s),story,https://publicdomainreview.org/collection/michalina-janoszanka/,,publicdomainreview.org
-ingve,1,43447126,42,1742663122,Bra and KET: String Interpolation in AmigaDOS,story,https://www.datagubbe.se/braket/,,datagubbe.se
-DanAtC,69,43448112,113,1742672764,Italy demands Google poison DNS under strict Piracy Shield law,story,https://arstechnica.com/gadgets/2025/03/italian-court-orders-google-to-block-iptv-pirate-sites-at-dns-level/,,arstechnica.com
-klaussilveira,138,43415820,386,1742409851,Crabtime: Zig’s Comptime in Rust,story,https://crates.io/crates/crabtime,,crates.io
-nosferalatu123,0,43430498,25,1742515596,Derivatives and Logarithms of 3D Transforms,story,https://nosferalatu.com/./DerivativesLogarithmsTransforms.html,,nosferalatu.com
-pama,11,43445894,95,1742654112,Understanding R1-Zero-Like Training: A Critical Perspective,story,https://github.com/sail-sg/understand-r1-zero,,github.com
-arthurgousset,12,43446659,50,1742659046,Show HN: We made an MCP server so Cursor can debug Node.js on its own,story,https://www.npmjs.com/package/@hyperdrive-eng/mcp-nodejs-debugger,,npmjs.com
-makepanic,73,43448723,106,1742678347,Next.js version 15.2.3 has been released to address a security vulnerability,story,https://nextjs.org/blog/cve-2025-29927,,nextjs.org
-andsoitis,48,43443640,183,1742618708,Scallop – A Language for Neurosymbolic Programming,story,https://www.scallop-lang.org/,,scallop-lang.org
-mooreds,7,43418343,38,1742426968,Hubble Captures Vivid Auroras in Jupiter's Atmosphere (2016),story,https://science.nasa.gov/missions/hubble/hubble-captures-vivid-auroras-in-jupiters-atmosphere/,,science.nasa.gov
-pseudolus,24,43410302,63,1742381137,Blue Ghost lander captures sunset shots on moon before falling silent,story,https://phys.org/news/2025-03-blue-ghost-lander-captures-stunning.html,,phys.org
+tosh,86,43464068,174,1742841312,Qwen2.5-VL-32B: Smarter and Lighter,story,https://qwenlm.github.io/blog/qwen2.5-vl-32b/,,qwenlm.github.io
+robin_reala,17,43464230,101,1742842367,Internet Archive Europe – Bringing Collections to Life,story,https://www.internetarchive.eu/,,internetarchive.eu
+tosh,150,43461701,365,1742827534,Triforce – a beamformer for Apple Silicon laptops,story,https://crates.io/crates/triforce-lv2,,crates.io
+ulugh,9,43464541,34,1742844365,The Peano Axioms: Building Blocks of Arithmetic,story,https://principlesofcryptography.com/number-theory-primer-an-axiomatic-study-of-natural-numbers-peano-axioms/,,principlesofcryptography.com
+jstanley,5,43458780,33,1742807083,The Prospero Challenge,story,https://www.mattkeeter.com/projects/prospero/,,mattkeeter.com
+izend,2,43464299,27,1742842800,Building an idempotent email API with River unique jobs,story,https://riverqueue.com/blog/idempotent-email-api-with-river,,riverqueue.com
+smegger001,57,43462882,85,1742834107,Project Operation Whitecoat Military Human Experimentation on 7th Day Adventists (2010),story,https://scholarworks.lib.csusb.edu/cgi/viewcontent.cgi?article=1201&context=history-in-the-making,,scholarworks.lib.csusb.edu
+numbsafari,0,43465424,6,1742850457,Multiple vulnerabilities in ingress-Nginx (Score 9.8),story,https://groups.google.com/g/kubernetes-security-announce/c/2qa9DFtN0cQ,,groups.google.com
+EA-3167,5,43441082,16,1742593278,CO2 laser enables long-range detection of radioactive material,story,https://physicsworld.com/a/co2-laser-enables-long-range-detection-of-radioactive-material/,,physicsworld.com
+ValentineC,118,43461375,231,1742825717,"Goblin.tools: simple, single-task tools to help neurodivergent people with tasks",story,https://goblin.tools/,,goblin.tools
+jjwiseman,0,43465189,3,1742848821,Aircraft Detection at Planetary Scale,story,https://www.planet.com/pulse/aircraft-detection-at-planetary-scale/,,planet.com
+FinnLobsien,51,43459361,110,1742812772,The Game Designer Playing Through His Own Psyche,story,https://www.newyorker.com/culture/persons-of-interest/the-game-designer-playing-through-his-own-psyche,,newyorker.com
+thinkingemote,1,43433648,55,1742550196,How to create value objects in Ruby – the idiomatic way,story,https://allaboutcoding.ghinda.com/how-to-create-value-objects-in-ruby-the-idiomatic-way,,allaboutcoding.ghinda.com
+diginova,112,43433030,263,1742545039,The earliest versions of the first C compiler known to exist,story,https://github.com/mortdeus/legacy-cc,,github.com
+PaulHoule,0,43436157,27,1742567418,600M years of shared environmental stress response found in algae and plants,story,https://phys.org/news/2025-03-million-years-environmental-stress-response.html,,phys.org
+benbreen,400,43442588,182,1742608551,"The Wright brothers invented the airplane, right? Not if you're in Brazil",story,https://www.washingtonpost.com/world/2025/03/21/brazil-airplane-wright-brothers-santos-dumont/,,washingtonpost.com
+rahil627,9,43451760,39,1742721642,Mruby/C and picoruby: high level langs in low-level devices?,story,https://github.com/picoruby/picoruby,,github.com
+pepys,59,43450884,65,1742703526,Rickover's Lessons,story,https://www.chinatalk.media/p/rickovers-lessons-how-to-build-a,,chinatalk.media
+toomuchtodo,1,43465346,8,1742849914,Eli Lilly will soon release key data on its weight loss pill orforglipron,story,https://www.cnbc.com/2025/03/24/eli-lilly-to-release-weight-loss-pill-orforglipron-trial-data-.html,,cnbc.com
+mariuz,58,43462299,107,1742830808,Mastering Delphi 5 2025 Annotated Edition Is Now Complete,story,https://blog.marcocantu.com/blog/2025-march-mastering-delphi5-annotated-complete.html,,marcocantu.com
+Petiver,46,43457699,44,1742788622,Researchers search for more precise ways to measure pain,story,https://www.washingtonpost.com/science/2025/03/23/pain-measure-precision-research/,,washingtonpost.com
+simonpure,33,43434010,87,1742553436,Autology: A Lisp with access to its own interpreter,story,https://github.com/Kimbsy/autology,,github.com
+bentobean,126,43456723,276,1742772819,Project Aardvark: reimagining AI weather prediction,story,https://www.turing.ac.uk/blog/project-aardvark-reimagining-ai-weather-prediction,,turing.ac.uk
+geox,0,43465256,5,1742849243,Mathematicians uncover the logic behind how people walk in crowds,story,https://news.mit.edu/2025/mathematicians-uncover-logic-behind-how-crowds-walk-0324,,news.mit.edu
+clemo_ra,,43459100,1,1742810172,"Langfuse (YC W23) Is Hiring in Berlin, Germany",job,https://langfuse.com/careers,,langfuse.com
+fliellerjulian,291,43454915,318,1742755960,"Show HN: LinkedIn sucks, so I built a better one",story,https://heyopenspot.com/,"LinkedIn feels more like Facebook every day — noisy feeds, fake engagement, and everyone shouting into the void.<p>Thats why I used to built a personal microsite on Squarespace and uploaded a video resume to YouTube to stand out - it helped me land interviews and get into Big Tech.<p>But I always wondered: why isn’t there a platform designed to help you stand out like that?<p>So I built OpenSpot: a public, curated platform where you can showcase who you are — with video, audio, and proof of your work. No endless feeds. No humblebrags. Just real people open to new opportunities.<p>We’ve already onboarded a few companies, so recruiters can reach out to you directly. But you can also connect with other standout folks and supercharge your network.<p>Just upload your resume and we´ll automatically generate your profile in under 1 minute.<p>It’s early, but feels like something people actually need.
+Would love your thoughts.",heyopenspot.com
+alabhyajindal,25,43434503,109,1742557657,A proof checker meant for education,story,https://jsiek.github.io/deduce/index.html,,jsiek.github.io
+gjvc,58,43456934,246,1742776025,Quadlet: Running Podman containers under systemd,story,https://mo8it.com/blog/quadlet/,,mo8it.com
+wesz,164,43452629,455,1742735121,Show HN: I built website for sharing Drum Patterns,story,http://drumpatterns.onether.com,"Originally started as a project to restore patterns from now defunct website 808.pixll.de just for myself, but eventually i decided to share it with others. I&#x27;ve seen this website mentioned a couple of times on HN:)<p>Currently it only supports Roland TR-808, but there will be more.",drumpatterns.onether.com
+pseudolus,34,43459264,197,1742811919,Japanese scientists use stem cell treatment to restore movement in spinal injury,story,https://medicalxpress.com/news/2025-03-japanese-scientists-stem-cell-treatment.html,,medicalxpress.com
