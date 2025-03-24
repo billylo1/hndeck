@@ -39,51 +39,7 @@
     <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
 </head>
 <body>
-<<<<<<< HEAD
-<main role="main">
-    <div class="container-fluid">
-        <div class="row">
-            {% for key, items in stories.items() %}
-            <div class="col">
-                <div class="header">
-                    <h1 class="col-header">{{ key}}</h1>
-                </div>
-                <div class="stories">
-                    {% for item in items %}
-                    <article class="item-wrapper">
-                        <div class="item">
-                            <p class="title">
-                                <a href="{{ item.url or item.hn_url }}" target="_blank">
-                                    {% if item.title|length > 70 %}
-                                    {{ item.title[:67] }}...
-                                    {% else %}
-                                    {{ item.title}}
-                                    {% endif %}
-                                </a>
-                            </p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <small class="text-muted text-left">
-                                    {{ item.score }} points by <a href="{{ item.user_url }}" target="_blank">{{ item.by
-                                    }}</a> {{ item.time }}
-                                </small>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <small class="text-muted text-left">{{ item.descendants }} comments | <a
-                                        href="{{ item.hn_url }}" target="_blank">discuss</a>
-                                    {% if item.domain %}| <a
-                                            href="https://news.ycombinator.com/from?site={{ item.domain }}"
-                                            target="_blank">{{ item.domain }}</a>{% endif %}</small>
-                            </div>
     <main role="main">
-        <section class="text-center" style="margin-top: 20px">
-            <div class="container">
-                <p class="lead">Source code for this website is
-                    <a href="https://github.com/sagunsh/hndeck" target="_blank"
-                       style="color: #0f2af7; text-decoration: underline;">on GitHub</a>
-                </p>
-            </div>
-        </section>
-
         <div class="container-fluid">
             <div class="row">
                 {% for key, items in stories.items() %}
@@ -129,3 +85,4 @@
 
 </body>
 </html>
+
