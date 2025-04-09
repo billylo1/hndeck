@@ -34,8 +34,4 @@ def index():
 
 
 if __name__ == '__main__':
-<<<<<<< HEAD
-    app.run(host='0.0.0.0', port=9443, ssl_context=("cert.pem", "key.pem"))
-=======
     app.run(host='0.0.0.0', port=5000, debug=True)
->>>>>>> fd7038064d3a9d6c7618393bb1ce6894a0c45d97
