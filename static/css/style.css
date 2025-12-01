@@ -1,8 +1,61 @@
+:root {
+    --bg-color: #ffffff;
+    --text-color: #212529;
+    --text-muted: #6c757d;
+    --link-color: #828282;
+    --link-hover: #828282;
+    --item-bg: #f0f0f0;
+    --item-border: #f0f0f0;
+    --scrollbar-thumb: #d8d8d8;
+    --scrollbar-track: #ffffff;
+    --footer-bg: #f0f0f0;
+    --footer-link: #007bff;
+    --footer-link-hover: #0062cc;
+}
+
+[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --text-muted: #a0a0a0;
+    --link-color: #b0b0b0;
+    --link-hover: #d0d0d0;
+    --item-bg: #2a2a2a;
+    --item-border: #3a3a3a;
+    --scrollbar-thumb: #4a4a4a;
+    --scrollbar-track: #1a1a1a;
+    --footer-bg: #2a2a2a;
+    --footer-link: #5a9fff;
+    --footer-link-hover: #7ab3ff;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --bg-color: #1a1a1a;
+        --text-color: #e0e0e0;
+        --text-muted: #a0a0a0;
+        --link-color: #b0b0b0;
+        --link-hover: #d0d0d0;
+        --item-bg: #2a2a2a;
+        --item-border: #3a3a3a;
+        --scrollbar-thumb: #4a4a4a;
+        --scrollbar-track: #1a1a1a;
+        --footer-bg: #2a2a2a;
+        --footer-link: #5a9fff;
+        --footer-link-hover: #7ab3ff;
+    }
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 .jumbotron {
     padding-top: 3rem;
     padding-bottom: 3rem;
     margin-bottom: 0;
-    background-color: #fff;
+    background-color: var(--bg-color);
 }
 
 @media (min-width: 768px) {
@@ -85,12 +138,12 @@
 }
 
 .stories::-webkit-scrollbar-thumb {
-    background: #d8d8d8;
+    background: var(--scrollbar-thumb);
     border-radius: 5px;
 }
 
 .stories::-webkit-scrollbar-track {
-    background: #ffffff;
+    background: var(--scrollbar-track);
 }
 
 .item {
@@ -107,9 +160,10 @@
     height: 92px;
     position: relative;
     max-width: 600px;
-    background: #f0f0f0;
-    border: 1px solid #f0f0f0;
+    background: var(--item-bg);
+    border: 1px solid var(--item-border);
     margin-bottom: 10px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 p.title {
@@ -120,12 +174,13 @@ p.title {
 
 a {
     text-decoration: none;
-    color: #828282;
+    color: var(--link-color);
+    transition: color 0.3s ease;
 }
 
 a:hover {
     text-decoration: underline;
-    color: #828282;
+    color: var(--link-hover);
 }
 
 .col-header {
@@ -137,16 +192,17 @@ a:hover {
 }
 
 .title > a {
-    color: #212529;
+    color: var(--text-color);
 }
 
 .title > a:hover {
-    color: #212529;
+    color: var(--text-color);
 }
 
 footer {
     padding: 50px 0 65px;
-    background-color: #f0f0f0;
+    background-color: var(--footer-bg);
+    transition: background-color 0.3s ease;
 }
 
 footer .copyright {
@@ -156,18 +212,61 @@ footer .copyright {
 }
 
 footer a {
-    color: #007bff;
+    color: var(--footer-link);
 }
 
 footer a:hover {
-    color: #0062cc;
+    color: var(--footer-link-hover);
     text-decoration: underline;
 }
 
 .share-button {
-    color: #212529;
+    color: var(--text-color);
 }
 
 .share-button:hover {
     color: #0f2af7;
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: var(--item-bg);
+    border: 1px solid var(--item-border);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.theme-toggle:hover {
+    background: var(--item-border);
+}
+
+.theme-toggle svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--text-color);
+    transition: fill 0.3s ease;
+}
+
+[data-theme="dark"] .theme-toggle svg.sun-icon,
+:root:not([data-theme="light"]) .theme-toggle svg.sun-icon {
+    display: none;
+}
+
+[data-theme="light"] .theme-toggle svg.moon-icon,
+:root:not([data-theme="dark"]) .theme-toggle svg.moon-icon {
+    display: none;
 }
