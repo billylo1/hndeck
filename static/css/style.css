@@ -184,11 +184,13 @@ a:hover {
 }
 
 .col-header {
-    font-size: 24px;
+    font-size: 18px;
     background-color: #ff6600;
     font-family: Verdana, Geneva, sans-serif;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    max-width: 400px;
+    margin: 0 auto;
 }
 
 .title > a {
