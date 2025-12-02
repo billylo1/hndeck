@@ -32,17 +32,32 @@
     <!--  Custom CSS  -->
     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
     
-    <!-- Theme Toggle Script -->
+    <!-- Theme Detection Script - Runs immediately to prevent flash -->
     <script>
         (function() {
-            const theme = localStorage.getItem('theme') || 'auto';
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            
-            if (theme === 'dark' || (theme === 'auto' && prefersDark)) {
-                document.documentElement.setAttribute('data-theme', 'dark');
-            } else {
-                document.documentElement.setAttribute('data-theme', 'light');
+            function detectAndSetTheme() {
+                const savedTheme = localStorage.getItem('theme');
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                
+                // If no saved preference, use browser preference
+                if (!savedTheme || savedTheme === 'auto') {
+                    document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+                } else {
+                    // Use saved preference
+                    document.documentElement.setAttribute('data-theme', savedTheme);
+                }
             }
+            
+            // Set theme immediately
+            detectAndSetTheme();
+            
+            // Listen for system theme changes when in auto mode
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+                const savedTheme = localStorage.getItem('theme');
+                if (!savedTheme || savedTheme === 'auto') {
+                    document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+                }
+            });
         })();
     </script>
 
@@ -110,14 +125,21 @@
             const themeToggle = document.getElementById('themeToggle');
             const html = document.documentElement;
             
+            function getBrowserPreference() {
+                return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+            
             function setTheme(theme) {
                 if (theme === 'auto') {
-                    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                    html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+                    // Follow browser preference
+                    const browserTheme = getBrowserPreference();
+                    html.setAttribute('data-theme', browserTheme);
+                    localStorage.setItem('theme', 'auto');
                 } else {
+                    // Use explicit theme
                     html.setAttribute('data-theme', theme);
+                    localStorage.setItem('theme', theme);
                 }
-                localStorage.setItem('theme', theme);
             }
             
             function getCurrentTheme() {
@@ -128,24 +150,30 @@
                 const current = getCurrentTheme();
                 let nextTheme;
                 
+                // Cycle: auto -> dark -> light -> auto
                 if (current === 'auto') {
-                    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                    nextTheme = prefersDark ? 'light' : 'dark';
+                    nextTheme = 'dark';
                 } else if (current === 'dark') {
                     nextTheme = 'light';
                 } else {
-                    nextTheme = 'dark';
+                    nextTheme = 'auto';
                 }
                 
                 setTheme(nextTheme);
             }
             
+            // Initialize theme on page load
+            const savedTheme = getCurrentTheme();
+            setTheme(savedTheme);
+            
+            // Set up toggle button
             themeToggle.addEventListener('click', toggleTheme);
             
-            // Listen for system theme changes
+            // Listen for system theme changes when in auto mode
             window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-                if (getCurrentTheme() === 'auto') {
-                    setTheme('auto');
+                const currentTheme = getCurrentTheme();
+                if (currentTheme === 'auto') {
+                    html.setAttribute('data-theme', e.matches ? 'dark' : 'light');
                 }
             });
         })();

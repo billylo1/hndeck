@@ -242,8 +242,8 @@ footer a:hover {
     background: var(--item-bg);
     border: 1px solid var(--item-border);
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -257,8 +257,8 @@ footer a:hover {
 }
 
 .theme-toggle svg {
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 18px;
     fill: var(--text-color);
     transition: fill 0.3s ease;
 }
