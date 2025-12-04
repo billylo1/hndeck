@@ -189,8 +189,7 @@ a:hover {
     font-family: Verdana, Geneva, sans-serif;
     padding-top: 6px;
     padding-bottom: 6px;
-    max-width: 400px;
-    margin: 0 auto;
+    width: 100%;
 }
 
 .title > a {
