@@ -147,19 +147,16 @@
             }
             
             function toggleTheme() {
-                const current = getCurrentTheme();
-                let nextTheme;
+                // Get the actual current visual theme
+                const currentVisualTheme = html.getAttribute('data-theme');
+                const savedTheme = getCurrentTheme();
                 
-                // Cycle: auto -> dark -> light -> auto
-                if (current === 'auto') {
-                    nextTheme = 'dark';
-                } else if (current === 'dark') {
-                    nextTheme = 'light';
-                } else {
-                    nextTheme = 'auto';
-                }
+                // Toggle to the opposite of current visual theme
+                const nextVisualTheme = currentVisualTheme === 'dark' ? 'light' : 'dark';
                 
-                setTheme(nextTheme);
+                // Save the explicit theme choice (not 'auto')
+                html.setAttribute('data-theme', nextVisualTheme);
+                localStorage.setItem('theme', nextVisualTheme);
             }
             
             // Initialize theme on page load
