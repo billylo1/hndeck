@@ -12,7 +12,7 @@ app = Flask(__name__)
 def index():
     data_dir = 'data'
     stories = {}
-    files = {'top': 'Top', 'new': 'New', 'ask': 'Ask HN', 'show': 'Show HN'}
+    files = {'top': 'Top', 'new': 'New', 'ask': 'Ask HN', 'show': 'Show HN', 'shownew': 'New Show HN'}
 
     for key, value in files.items():
         stories[value] = []

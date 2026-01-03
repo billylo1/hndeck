@@ -72,3 +72,26 @@ if __name__ == '__main__':
             writer = csv.DictWriter(file, fieldnames=items[0].keys())
             writer.writeheader()
             writer.writerows(items)
+
+    # Special handling for "New Show HN" - filter newest stories for "Show HN:" titles
+    print('Scraping shownew')
+    try:
+        response = requests.get('https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty', timeout=180)
+        new_stories = response.json()
+    except:
+        new_stories = []
+
+    items = []
+    for story_id in new_stories:
+        item = scrape_item(story_id)
+        if item and item.get('title', '').startswith('Show HN:'):
+            print(item)
+            items.append(item)
+            if len(items) >= 30:
+                break
+
+    if items:
+        with open(os.path.join(data_dir, 'shownew.csv'), 'w') as file:
+            writer = csv.DictWriter(file, fieldnames=items[0].keys())
+            writer.writeheader()
+            writer.writerows(items)
