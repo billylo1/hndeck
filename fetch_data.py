@@ -1,8 +1,16 @@
 import csv
 import os
+import re
+from email.utils import parsedate_to_datetime
 from urllib.parse import urlparse
+from xml.etree import ElementTree
 
 import requests
+
+RSS_FEED_URL = (
+    'https://mytwitter-feed.web.app/feed.xml'
+    '?token=PxfOyFq_Gb4FnU3jeOFylpf2wPIwboZ4'
+)
 
 
 def scrape_item(story):
@@ -36,6 +44,53 @@ def scrape_item(story):
     return item
 
 
+def scrape_rss(limit=30):
+    try:
+        response = requests.get(RSS_FEED_URL, timeout=30)
+        response.raise_for_status()
+        root = ElementTree.fromstring(response.content)
+    except Exception as exc:
+        print(f'RSS fetch failed: {exc}')
+        return 'MyTwitter', []
+
+    channel = root.find('channel')
+    column_title = (channel.findtext('title') if channel is not None else None) or 'MyTwitter'
+    items = []
+
+    for entry in root.findall('.//item')[:limit]:
+        title = (entry.findtext('title') or '').strip()
+        link = (entry.findtext('link') or '').strip()
+        guid = (entry.findtext('guid') or link).strip()
+        pub_date = (entry.findtext('pubDate') or '').strip()
+
+        unix_time = 0
+        if pub_date:
+            try:
+                published = parsedate_to_datetime(pub_date)
+                unix_time = int(published.timestamp())
+            except (TypeError, ValueError, IndexError, OverflowError):
+                unix_time = 0
+
+        by = ''
+        match = re.match(r'@([A-Za-z0-9_]+)', title)
+        if match:
+            by = match.group(1)
+
+        domain = urlparse(link).netloc if link else ''
+        item = {
+            'by': by,
+            'id': guid,
+            'time': unix_time,
+            'title': title,
+            'url': link,
+            'domain': domain,
+        }
+        print(item)
+        items.append(item)
+
+    return column_title, items
+
+
 if __name__ == '__main__':
     data_dir = 'data'
     os.makedirs(data_dir, exist_ok=True)
@@ -43,7 +98,6 @@ if __name__ == '__main__':
     urls = {
         'top': 'https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty',
         'new': 'https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty',
-        'ask': 'https://hacker-news.firebaseio.com/v0/askstories.json?print=pretty',
         'show': 'https://hacker-news.firebaseio.com/v0/showstories.json?print=pretty',
     }
 
@@ -95,3 +149,13 @@ if __name__ == '__main__':
             writer = csv.DictWriter(file, fieldnames=items[0].keys())
             writer.writeheader()
             writer.writerows(items)
+
+    print('Scraping rss')
+    rss_title, rss_items = scrape_rss()
+    if rss_items:
+        with open(os.path.join(data_dir, 'rss.csv'), 'w') as file:
+            writer = csv.DictWriter(file, fieldnames=rss_items[0].keys())
+            writer.writeheader()
+            writer.writerows(rss_items)
+        with open(os.path.join(data_dir, 'rss_title.txt'), 'w') as file:
+            file.write(rss_title)

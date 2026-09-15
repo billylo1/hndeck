@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="refresh" content="{{ refresh_seconds }}">
     <meta name="description" content="HN Deck: An alternate way to browse Hacker News">
     <meta name="author" content="Sagun shrestha">
     <title>HN Deck: An alternate way to browse Hacker News</title>
@@ -73,6 +74,15 @@
                                                 {% endif %}
                                             </a>
                                         </p>
+                                        {% if item.is_rss %}
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <small class="text-muted text-left">
+                                                {% if item.by %}<a href="{{ item.user_url }}" target="_blank">@{{ item.by }}</a>{% endif %}
+                                                {{ item.time }}
+                                                {% if item.domain %}| <a href="{{ item.url }}" target="_blank">{{ item.domain }}</a>{% endif %}
+                                            </small>
+                                        </div>
+                                        {% else %}
                                         <div class="d-flex justify-content-between align-items-center">
                                             <small class="text-muted text-left">
                                                 {{ item.score }} points by <a href="{{ item.user_url }}"
@@ -86,6 +96,7 @@
                                                         href="https://news.ycombinator.com/from?site={{ item.domain }}"
                                                         target="_blank">{{ item.domain }}</a>{% endif %}</small>
                                         </div>
+                                        {% endif %}
                                     </div>
                                 </article>
                             {% endfor %}

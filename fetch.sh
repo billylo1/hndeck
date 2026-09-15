@@ -1,3 +1,3 @@
 cd ~/python/hndeck
-source ./bin/activate
+source ./venv/bin/activate
 python3 fetch_data.py
