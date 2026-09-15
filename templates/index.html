@@ -67,8 +67,8 @@
                                     <div class="item">
                                         <p class="title">
                                             <a href="{{ item.url or item.hn_url }}" target="_blank">
-                                                {% if item.title|length > 70 %}
-                                                    {{ item.title[:67] }}...
+                                                {% if item.title|length > 140 %}
+                                                    {{ item.title[:137] }}...
                                                 {% else %}
                                                     {{ item.title }}
                                                 {% endif %}
