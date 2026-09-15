@@ -76,8 +76,9 @@ def scrape_rss(limit=30):
         if match:
             by = match.group(1)
 
-        # Drop "@user reposted " so the title is just the original post text.
+        # Drop "@user reposted " and leading "@handle: " so title is just the post text.
         title = re.sub(r'^@[A-Za-z0-9_]+\s+reposted\s+', '', title).strip()
+        title = re.sub(r'^@[A-Za-z0-9_]+\s*:\s*', '', title).strip()
 
         domain = urlparse(link).netloc if link else ''
         item = {

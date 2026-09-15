@@ -12,8 +12,9 @@ PAGE_REFRESH_SECONDS = 10 * 60
 
 
 def clean_rss_title(title):
-    """Strip '@user reposted ' so cards show just the post title."""
-    return re.sub(r'^@[A-Za-z0-9_]+\s+reposted\s+', '', title or '').strip()
+    """Strip repost markers and leading @handle so cards show just the post text."""
+    title = re.sub(r'^@[A-Za-z0-9_]+\s+reposted\s+', '', title or '').strip()
+    return re.sub(r'^@[A-Za-z0-9_]+\s*:\s*', '', title).strip()
 
 
 def load_csv_stories(data_dir, key, limit=30, is_rss=False):
