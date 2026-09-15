@@ -1,5 +1,6 @@
 import csv
 import os
+import re
 from datetime import datetime
 
 import humanize
@@ -8,6 +9,11 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 PAGE_REFRESH_SECONDS = 10 * 60
+
+
+def clean_rss_title(title):
+    """Strip '@user reposted ' so cards show just the post title."""
+    return re.sub(r'^@[A-Za-z0-9_]+\s+reposted\s+', '', title or '').strip()
 
 
 def load_csv_stories(data_dir, key, limit=30, is_rss=False):
@@ -29,6 +35,7 @@ def load_csv_stories(data_dir, key, limit=30, is_rss=False):
             if is_rss:
                 link = item.get('url') or ''
                 by = item.get('by') or ''
+                item['title'] = clean_rss_title(item.get('title'))
                 item['hn_url'] = link
                 item['user_url'] = f'https://x.com/{by}' if by else link
                 item['score'] = None
