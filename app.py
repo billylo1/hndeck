@@ -1,6 +1,5 @@
 import csv
 import os
-import re
 from datetime import datetime
 
 import humanize
@@ -11,13 +10,7 @@ app = Flask(__name__)
 PAGE_REFRESH_SECONDS = 10 * 60
 
 
-def clean_rss_title(title):
-    """Strip repost markers and leading @handle so cards show just the post text."""
-    title = re.sub(r'^@[A-Za-z0-9_]+\s+reposted\s+', '', title or '').strip()
-    return re.sub(r'^@[A-Za-z0-9_]+\s*:\s*', '', title).strip()
-
-
-def load_csv_stories(data_dir, key, limit=30, is_rss=False):
+def load_csv_stories(data_dir, key, limit=30):
     file_path = os.path.join(data_dir, f'{key}.csv')
     if not os.path.isfile(file_path):
         return []
@@ -32,18 +25,8 @@ def load_csv_stories(data_dir, key, limit=30, is_rss=False):
             else:
                 ago_time = ''
             item['time'] = ago_time
-            item['is_rss'] = is_rss
-            if is_rss:
-                link = item.get('url') or ''
-                by = item.get('by') or ''
-                item['title'] = clean_rss_title(item.get('title'))
-                item['hn_url'] = link
-                item['user_url'] = f'https://x.com/{by}' if by else link
-                item['score'] = None
-                item['descendants'] = None
-            else:
-                item['hn_url'] = f'https://news.ycombinator.com/item?id={item["id"]}'
-                item['user_url'] = f'https://news.ycombinator.com/user?id={item["by"]}'
+            item['hn_url'] = f'https://news.ycombinator.com/item?id={item["id"]}'
+            item['user_url'] = f'https://news.ycombinator.com/user?id={item["by"]}'
             items.append(item)
     return items
 
@@ -51,16 +34,10 @@ def load_csv_stories(data_dir, key, limit=30, is_rss=False):
 @app.route('/')
 def index():
     data_dir = 'data'
-    rss_title_path = os.path.join(data_dir, 'rss_title.txt')
-    rss_title = 'MyTwitter'
-    if os.path.isfile(rss_title_path):
-        with open(rss_title_path) as file:
-            rss_title = file.read().strip() or rss_title
-
     stories = {
         'Top': load_csv_stories(data_dir, 'top'),
         'New': load_csv_stories(data_dir, 'new'),
-        rss_title: load_csv_stories(data_dir, 'rss', is_rss=True),
+        'Ask HN': load_csv_stories(data_dir, 'ask'),
         'Show HN': load_csv_stories(data_dir, 'show'),
         'New Show HN': load_csv_stories(data_dir, 'shownew'),
     }
