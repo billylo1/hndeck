@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="refresh" content="{{ refresh_seconds }}">
     <meta name="description" content="HN Deck: An alternate way to browse Hacker News">
     <meta name="author" content="Sagun shrestha">
     <title>HN Deck: An alternate way to browse Hacker News</title>
@@ -110,6 +109,105 @@
             window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
                 setThemeFromOS();
             });
+        })();
+    </script>
+
+    <!-- Activity-aware auto-reload -->
+    <script>
+        (function() {
+            const refreshSeconds = parseInt('{{ refresh_seconds }}', 10) || 600;
+            if (refreshSeconds <= 0) return;
+
+            const REFRESH_INTERVAL_MS = refreshSeconds * 1000;
+            const IDLE_THRESHOLD_MS = 30 * 1000; // Require 30 seconds of quiet before refreshing
+            const CHECK_INTERVAL_MS = 5 * 1000;  // Polling step when deferred
+
+            let lastActivityTime = Date.now();
+            let lastRecordTime = 0;
+            const THROTTLE_MS = 250;
+
+            function recordActivity() {
+                const now = Date.now();
+                if (now - lastRecordTime > THROTTLE_MS) {
+                    lastActivityTime = now;
+                    lastRecordTime = now;
+                }
+            }
+
+            // Capture mouse, wheel, scroll, touch, and key interactions across all containers
+            const activityEvents = [
+                'mousemove',
+                'mousedown',
+                'mouseup',
+                'wheel',
+                'scroll',
+                'touchstart',
+                'touchmove',
+                'keydown'
+            ];
+
+            activityEvents.forEach((eventName) => {
+                window.addEventListener(eventName, recordActivity, { capture: true, passive: true });
+            });
+
+            // Preserve column scroll positions across reload so user never loses their reading place
+            function saveScrollPositions() {
+                try {
+                    const columns = document.querySelectorAll('.stories');
+                    const positions = Array.from(columns).map(col => col.scrollTop);
+                    sessionStorage.setItem('hndeck_scroll_positions', JSON.stringify(positions));
+                } catch (e) {
+                    // Ignore storage quota or access issues silently
+                }
+            }
+
+            function restoreScrollPositions() {
+                try {
+                    const saved = sessionStorage.getItem('hndeck_scroll_positions');
+                    if (saved) {
+                        sessionStorage.removeItem('hndeck_scroll_positions');
+                        const positions = JSON.parse(saved);
+                        const columns = document.querySelectorAll('.stories');
+                        columns.forEach((col, idx) => {
+                            if (typeof positions[idx] === 'number') {
+                                col.scrollTop = positions[idx];
+                            }
+                        });
+                    }
+                } catch (e) {
+                    // Ignore parse errors silently
+                }
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', restoreScrollPositions);
+            } else {
+                restoreScrollPositions();
+            }
+
+            const scheduledTime = Date.now() + REFRESH_INTERVAL_MS;
+
+            function checkAndReload() {
+                const now = Date.now();
+                const timeRemaining = scheduledTime - now;
+
+                if (timeRemaining > 0) {
+                    setTimeout(checkAndReload, timeRemaining);
+                    return;
+                }
+
+                const idleDuration = now - lastActivityTime;
+                if (idleDuration >= IDLE_THRESHOLD_MS) {
+                    saveScrollPositions();
+                    window.location.reload();
+                } else {
+                    // Active mouse or scroll activity detected: postpone reload until idle
+                    const deferTime = Math.max(CHECK_INTERVAL_MS, IDLE_THRESHOLD_MS - idleDuration);
+                    setTimeout(checkAndReload, deferTime);
+                }
+            }
+
+            setTimeout(checkAndReload, REFRESH_INTERVAL_MS);
         })();
     </script>
 </body>
